@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 dotenv.config();
 app.use(bodyParser.urlencoded({ extended: false }));
-// Extracts json data and makes it easy readable to us
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
@@ -22,6 +22,7 @@ mongoose
   .connect(process.env.ATLAS_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    writeConcern: { w: "majority", j: true, wtimeout: 1000 },
   })
   .then(() => console.log("Database Successfully Connected"))
   .catch((error) => console.log(error));
