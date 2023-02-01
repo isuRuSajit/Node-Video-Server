@@ -15,7 +15,8 @@ app.get("/", (req, res) => {
   res.send("Running ");
 });
 
-app.use("/api/signUp", require("./routes/signUp"));
+app.use("/api/signup", require("./routes/signUp"));
+app.use("/api/signin", require("./routes/signIn"));
 
 mongoose.set("strictQuery", true);
 mongoose
